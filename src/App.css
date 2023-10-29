@@ -1,0 +1,198 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: black;
+  background-color: whitesmoke;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  /* --custom name: value; */
+  /* --navy-clr: #476529; */
+  /* example implamentation, color: var(--navy-clr) */
+  --header-clr: red;
+  --main-content-clr: rgb(0, 87, 0);
+  --img-bg-clr: whitesmoke;
+  --caption-bg-clr: whitesmoke;
+}
+
+body,
+html,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.page-container {
+  /* height: 100%;   */
+  height: auto;
+  display: grid;
+  /* grid-template-columns: auto 1fr; */
+  grid-template-rows: auto 1fr;
+  position: relative;
+}
+
+.header {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  z-index: 2;
+  /* border: .5rem solid black; */
+  /* box-shadow: 0.10rem 0.25rem .9rem black; */
+  padding: 2rem;
+  /* background-color: var(--header-clr); */
+  background-color: #FF6961;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+
+  /* From https://css.glass */
+  background: rgba(255, 0, 0, 0.863);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8.4px);
+  -webkit-backdrop-filter: blur(8.4px);
+  border: 1px solid rgba(255, 0, 0, 0.06);
+}
+
+.page-title {
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.page-content {
+  height: 100%;
+  padding: 2.5rem;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  background-color: var(--main-content-clr);
+}
+
+.allCards{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.card-container{
+  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  border-radius: 2rem;
+  padding: 1rem;
+  box-shadow: 0.10rem 0.25rem .9rem black;
+  width: max-content;
+  cursor: pointer;
+  transition-duration: 100ms;
+  background-color: rgb(0, 168, 0);
+}
+
+.card-container:hover{
+  box-shadow: 0.10rem 0.25rem .9rem yellow;
+  transform: scale(1.1);
+}
+
+img{
+  width: 12rem;
+  height: auto;
+  border: 2px solid black;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: var(--img-bg-clr);
+  margin-bottom: 1rem;
+}
+.caption{
+  border: 2px solid black;
+  padding: 2rem;
+  border-radius: 2rem;
+  background-color: var(--caption-bg-clr);
+  color: black;
+}
+
+.win-banner{
+  position: fixed;
+  z-index: 10;
+  background-color: lightblue;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  height: auto;
+  padding: 3rem;
+  gap: 1rem;
+  border: 2px solid black;
+  border-radius: 2rem;
+}
+.win-title{
+  font-weight: bolder;
+  font-size: 2rem;
+}
+.win-caption{
+  font-weight: bold;
+  font-size: 1rem;
+}
+.play-again-btn{
+  padding: 1rem 3rem;
+  border-radius: .25rem;
+  cursor: pointer;
+}
+
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+  pointer-events: all;
+}
+
+.preloader{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  z-index: 20;
+  pointer-events: all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.preloader-img{
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-top: 20px solid red;
+  border-bottom: 20px solid red;
+  border-left: 20px solid white;
+  border-right: 20px solid white;
+  border-radius: 50%;
+  z-index: 30;
+  animation: spin 2000ms linear infinite;
+}
+@keyframes spin{
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
